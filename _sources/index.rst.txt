@@ -1,5 +1,7 @@
-python-gfshare |version| documentation
-======================================
+python-gfshare documentation
+============================
+
+Version: |version|
 
 .. automodule:: gfshare
    :members:
