@@ -66,16 +66,19 @@ computers together.</p>
 <span class="go"> 171: b&#39;&gt;\xf5*\xce\xa2\xe2&#39;,</span>
 <span class="go"> 173: b&#39;d\xd1\xaaR\xa5\x1d&#39;,</span>
 <span class="go"> 183: b&#39;\x0c\xb4Y\x8apC&#39;}</span>
-<span class="go"># We can always recombine if we still have all the original shares</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gfshare</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">shares</span><span class="p">)</span>
 <span class="go">b&quot;secret&quot;</span>
-<span class="go"># Remove 2 shares. We can still reconstruct as we have 3/5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;104&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We now remove 2 shares. We can still reconstruct as we have 3/5:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;104&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;171&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gfshare</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">shares</span><span class="p">)</span>
 <span class="go">b&quot;secret&quot;</span>
-<span class="go"># Remove another share; we cannot reconstruct the original secret</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;164&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Remove another shares. we cannot reconstruct the original secret:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;164&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gfshare</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">shares</span><span class="p">)</span>
 <span class="go">b&#39;\xea\x87\x99\x06)\x86&#39;</span>
 </pre></div>
