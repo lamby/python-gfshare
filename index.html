@@ -45,7 +45,7 @@
             
   <div class="section" id="python-gfshare-documentation">
 <h1>python-gfshare documentation<a class="headerlink" href="#python-gfshare-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Version: 0.0.1</p>
+<p><strong>Version</strong>: 0.0.1</p>
 <span class="target" id="module-gfshare"></span><p>This Python library implements <a class="reference external" href="https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing">Shamir’s method for secret sharing</a> which can be used
 to split an arbitrary secret into multiple parts.</p>
 <p>Some number of those parts are then needed to recover the original file, but
@@ -70,14 +70,15 @@ computers together.</p>
 <span class="go">b&quot;secret&quot;</span>
 </pre></div>
 </div>
-<p>We now remove 2 shares. We can still reconstruct as we have 3/5:</p>
+<p>We now remove 2 shares. We can still reconstruct the secret as we have three out
+of the five originals.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;104&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;171&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gfshare</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">shares</span><span class="p">)</span>
 <span class="go">b&quot;secret&quot;</span>
 </pre></div>
 </div>
-<p>Remove another shares. we cannot reconstruct the original secret:</p>
+<p>Remove another shares. We now cannot reconstruct the original secret.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;164&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gfshare</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">shares</span><span class="p">)</span>
 <span class="go">b&#39;\xea\x87\x99\x06)\x86&#39;</span>
