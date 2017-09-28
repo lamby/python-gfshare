@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>python-gfshare documentation &#8212; python-gfshare  documentation</title>
+    <title>python-gfshare 0.0.1 documentation &#8212; python-gfshare  documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -43,9 +43,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="python-gfshare-documentation">
-<h1>python-gfshare documentation<a class="headerlink" href="#python-gfshare-documentation" title="Permalink to this headline">¶</a></h1>
-<p><strong>Version</strong>: <a class="reference external" href="http://semver.org/">|version|</a></p>
+  <div class="section" id="python-gfshare-version-documentation">
+<h1>python-gfshare 0.0.1 documentation<a class="headerlink" href="#python-gfshare-version-documentation" title="Permalink to this headline">¶</a></h1>
+<p><strong>Author</strong>: <a class="reference external" href="https://chris-lamb.co.uk/">Chris Lamb</a> &lt;<a class="reference external" href="mailto:chris&#37;&#52;&#48;chris-lamb&#46;co&#46;uk">chris<span>&#64;</span>chris-lamb<span>&#46;</span>co<span>&#46;</span>uk</a>&gt;</p>
+<a class="reference external image-reference" href="https://travis-ci.org/lamby/python-gfshare"><img alt="https://travis-ci.org/lamby/python-gfshare.svg?branch=master" src="https://travis-ci.org/lamby/python-gfshare.svg?branch=master" /></a>
 <span class="target" id="module-gfshare"></span><p>This Python library implements <a class="reference external" href="https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing">Shamir’s method for secret sharing</a> which can be used
 to split an arbitrary secret into multiple parts.</p>
 <p>Some number of those parts are then needed to recover the original file, but
@@ -70,15 +71,15 @@ computers together.</p>
 <span class="go">b&quot;secret&quot;</span>
 </pre></div>
 </div>
-<p>We now remove 2 shares. We can still reconstruct the secret as we have three out
-of the five originals.</p>
+<p>We remove 2 shares. We can still reconstruct the secret as we have 3 out
+of the 5 originals.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;104&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;171&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gfshare</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">shares</span><span class="p">)</span>
 <span class="go">b&quot;secret&quot;</span>
 </pre></div>
 </div>
-<p>Remove another share. We now cannot reconstruct the original secret.</p>
+<p>After removing another share we now cannot reconstruct the original secret.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;164&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gfshare</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">shares</span><span class="p">)</span>
 <span class="go">b&#39;\xea\x87\x99\x06)\x86&#39;</span>
@@ -92,34 +93,29 @@ of the five originals.</p>
 <code class="descclassname">gfshare.</code><code class="descname">split</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gfshare.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an “n-of-m” share of a given secret into a number of shares.</p>
 <p>The threshold number of shares cannot exceed the total share count.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">param threshold:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">The number of shares required to reconstruct the
-secret (minimum: 1).</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>threshold</strong> (<em>int</em>) – The number of shares required to reconstruct the
+secret (min: 1).</li>
+<li><strong>sharecount</strong> (<em>int</em>) – The total number of shares to make (min: 2)</li>
+<li><strong>secret</strong> (<em>bytes</em>) – The secret to split.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">type threshold:</th><td class="field-body">int.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The generated shares associated with their share number.</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">param sharecount:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">The total number of shares to make (minimum: 2)</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">dict</p>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">type sharecount:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">int.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">param secret:</th><td class="field-body">The secret to split.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">type secret:</th><td class="field-body">bytes.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body">dict – the generated shares associated with their share number.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">raises:</th><td class="field-body">ValueError, TypeError</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">ValueError, TypeError</p>
+</td>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </dd></dl>
 
 <dl class="function">
@@ -127,24 +123,52 @@ secret (minimum: 1).</td>
 <code class="descclassname">gfshare.</code><code class="descname">combine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gfshare.combine" title="Permalink to this definition">¶</a></dt>
 <dd><p>Combine a number of shares generated by <a class="reference internal" href="#gfshare.split" title="gfshare.split"><code class="xref py py-func docutils literal"><span class="pre">split()</span></code></a> to form the original secret.</p>
 <p>If the share cannot be reconstructed, the result is undefined.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">param shares:</th><td class="field-body">A dict of <code class="docutils literal"><span class="pre">int</span></code>, <code class="docutils literal"><span class="pre">bytes</span></code> pairs.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>shares</strong> (<em>dict</em>) – A dict of <code class="docutils literal"><span class="pre">int</span></code>, <code class="docutils literal"><span class="pre">bytes</span></code> pairs.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">type shares:</th><td class="field-body">dict.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The original secret (if available)</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body">bytes – the original secret if available</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bytes</td>
 </tr>
-<tr class="field-even field"><th class="field-name">raises:</th><td class="field-body">ValueError, TypeError, RuntimeError</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError, TypeError, RuntimeError</td>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </dd></dl>
 
+</div>
+<div class="section" id="copyright">
+<h2>Copyright<a class="headerlink" href="#copyright" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Copyright (C) 2017 Chris Lamb &lt;chris@chris-lamb.co.uk&gt;
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. Neither the name of the University nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS&#39;&#39; AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -156,9 +180,10 @@ secret (minimum: 1).</td>
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">python-gfshare documentation</a><ul>
+<li><a class="reference internal" href="#">python-gfshare 0.0.1 documentation</a><ul>
 <li><a class="reference internal" href="#example">Example</a></li>
 <li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#copyright">Copyright</a></li>
 </ul>
 </li>
 </ul>
