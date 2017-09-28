@@ -1,12 +1,5 @@
-Welcome to python-gfshare's documentation!
-==========================================
+python-gfshare |version| documentation
+======================================
 
 .. automodule:: gfshare
    :members:
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
