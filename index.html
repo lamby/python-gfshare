@@ -58,8 +58,7 @@ computers together.</p>
 <p>Under the hood it uses Daniel Silverstone’s <a class="reference external" href="http://www.digital-scurf.org/software/libgfshare">libgfshare</a> library.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">gfshare</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">gfshare</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shares</span> <span class="o">=</span> <span class="n">gfshare</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;secret&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shares</span>
 <span class="go">{104: b&#39;1\x9cQ\xd8\xd3\xaf&#39;,</span>
@@ -75,13 +74,12 @@ computers together.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;171&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gfshare</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">shares</span><span class="p">)</span>
 <span class="go">b&quot;secret&quot;</span>
+<span class="go"># Remove another share; we cannot reconstruct the original secret</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">shares</span><span class="p">[</span><span class="s1">&#39;164&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gfshare</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">shares</span><span class="p">)</span>
+<span class="go">b&#39;\xea\x87\x99\x06)\x86&#39;</span>
 </pre></div>
 </div>
-<p># Remove another share; we cannot reconstruct the original secret
-&gt;&gt;&gt; del shares[‘164’]
-&gt;&gt;&gt; gfshare.combine(shares)
-b’xeax87x99x06)x86’</p>
-</div></blockquote>
 <dl class="function">
 <dt id="gfshare.combine">
 <code class="descclassname">gfshare.</code><code class="descname">combine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gfshare.combine" title="Permalink to this definition">¶</a></dt>
