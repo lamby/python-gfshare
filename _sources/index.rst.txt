@@ -1,7 +1,12 @@
 python-gfshare documentation
 ============================
 
-**Version**: |version|
+**Version**: `|version| <http://semver.org/>`__
 
 .. automodule:: gfshare
-   :members:
+
+Methods
+-------
+
+.. autofunction:: gfshare.split
+.. autofunction:: gfshare.combine
