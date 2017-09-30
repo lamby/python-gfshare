@@ -48,9 +48,9 @@
 <p><strong>Author</strong>: <a class="reference external" href="https://chris-lamb.co.uk/">Chris Lamb</a> &lt;<a class="reference external" href="mailto:chris&#37;&#52;&#48;chris-lamb&#46;co&#46;uk">chris<span>&#64;</span>chris-lamb<span>&#46;</span>co<span>&#46;</span>uk</a>&gt;</p>
 <a class="reference external image-reference" href="https://travis-ci.org/lamby/python-gfshare"><img alt="https://travis-ci.org/lamby/python-gfshare.svg?branch=master" src="https://travis-ci.org/lamby/python-gfshare.svg?branch=master" /></a>
 <span class="target" id="module-gfshare"></span><p>This Python library implements <a class="reference external" href="https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing">Shamir’s method for secret sharing</a> which can be used
-to split an arbitrary secret into multiple parts.</p>
-<p>Some number of those parts are then needed to recover the original file, but
-any smaller combination of parts are useless to an attacker.</p>
+to split an arbitrary secret into multiple parts. An arbitrary number of those
+parts are then needed to recover the original file, but any smaller combination
+of parts are useless to an attacker.</p>
 <p>For instance, you might split a GPG key into a “3-of-5” share and put one share
 on each of three computers and two shares on a USB memory stick. You can can
 use the GPG key on any of those three computers using the memory stick, but if
