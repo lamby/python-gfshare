@@ -1,0 +1,6 @@
+*.pyc
+*.so
+build/
+/.eggs
+/.cache
+/docs/_build/
