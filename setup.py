@@ -32,7 +32,7 @@ from setuptools import setup, Extension
 
 setup(
     name='gfshare',
-    version='1.0.1',
+    version='1.0.2',
     description="Python interface to libgfshare",
 
     url="https://chris-lamb.co.uk/projects/python-libgshare",
