@@ -55,7 +55,7 @@ PyDoc_STRVAR(gfshare__doc__,
     "on each of three computers and two shares on a USB memory stick. You can then\n"
     "use the GPG key on any of those three computers using the memory stick. If\n"
     "the memory stick is lost you can ultimately recover the key by bringing the three\n"
-    "computers back together.\n"
+    "computers back together again.\n"
     "\n"
     "Under the hood it uses Daniel Silverstone's `libgfshare\n"
     "<http://www.digital-scurf.org/software/libgfshare>`__ library.\n"
