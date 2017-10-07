@@ -30,10 +30,14 @@
 
 from setuptools import setup, Extension
 
+with open('README.rst') as f:
+    long_description = f.read().strip()
+
 setup(
     name='gfshare',
     version='1.0.2',
     description="Python interface to libgfshare",
+    long_description=long_description,
 
     url="https://chris-lamb.co.uk/projects/python-libgshare",
     author="Chris Lamb",
