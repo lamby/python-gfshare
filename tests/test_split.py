@@ -38,6 +38,16 @@ def test_validate_sharecount_threshold():
     assert str(exc.value) == "sharecount must be >= threshold"
 
 
+def test_huge_split():
+    max_ = gfshare.MAX_SHARECOUNT
+
+    assert gfshare.split(max_, max_, b"secret")
+
+    with pytest.raises(ValueError) as exc:
+        gfshare.split(max_ + 1, max_ + 1, b"secret")
+    assert str(exc.value) == "sharecount must be < {}".format(max_)
+
+
 def test_validate_type():
     with pytest.raises(TypeError) as exc:
         gfshare.split(10, 10, "str")

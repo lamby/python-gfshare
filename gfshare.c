@@ -38,6 +38,7 @@ struct module_state {
 };
 
 #define BUFFER_SIZE 4096
+#define MAX_SHARECOUNT 253
 
 #ifndef MIN
 #define MIN(a,b) ((a)<(b))?(a):(b)
@@ -99,7 +100,7 @@ PyDoc_STRVAR(gfshare_split__doc__,
     "\n"
     ":param threshold:  The number of shares required to reconstruct the\n"
     "                   secret (min: 1).\n"
-    ":param sharecount: The total number of shares to make (min: 2)\n"
+    ":param sharecount: The total number of shares to make (min: 2, max: 253)\n"
     ":param secret:     The secret to split.\n"
     ":type threshold:   int\n"
     ":type sharecount:  int\n"
@@ -183,6 +184,11 @@ split(PyObject *m, PyObject *args, PyObject *keywds) {
 
     if (sharecount < 2) {
         PyErr_SetString(PyExc_ValueError, "sharecount must be >= 2");
+        goto cleanup;
+    }
+
+    if (sharecount > MAX_SHARECOUNT) {
+        PyErr_Format(PyExc_ValueError, "sharecount must be < %d", MAX_SHARECOUNT);
         goto cleanup;
     }
 
@@ -412,6 +418,7 @@ PyInit_gfshare(void)
         goto fail;
 
     PyModule_AddObject(module, "_BUFFER_SIZE", PyLong_FromLong(BUFFER_SIZE));
+    PyModule_AddObject(module, "MAX_SHARECOUNT", PyLong_FromLong(MAX_SHARECOUNT));
 
     return module;
 
