@@ -34,13 +34,17 @@ def test_validate_single():
 def test_validate_keys():
     with pytest.raises(TypeError) as exc:
         gfshare.combine({0: b'foo', 1: b'bar'})
-    assert str(exc.value) == "shares keys not comprised entirely of positive numbers"
+
+    assert str(exc.value) == \
+        "shares keys not comprised entirely of positive numbers"
 
 
 def test_validate_values():
     with pytest.raises(TypeError) as exc:
         gfshare.combine({1: 'foo', 2: b'bar'})
-    assert str(exc.value) == "shares values not comprised entirely of byte objects"
+
+    assert str(exc.value) == \
+        "shares values not comprised entirely of byte objects"
 
 
 def test_validate_value_sizes():
