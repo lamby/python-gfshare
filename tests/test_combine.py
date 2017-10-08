@@ -36,7 +36,7 @@ def test_validate_keys():
         gfshare.combine({0: b'foo', 1: b'bar'})
 
     assert str(exc.value) == \
-        "shares keys not comprised entirely of positive numbers"
+        "shares dict keys not comprised entirely of positive numbers"
 
 
 def test_validate_values():

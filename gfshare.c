@@ -304,7 +304,7 @@ combine(PyObject *m, PyObject *args, PyObject *keywds) {
 
         if (sharenrs[i] < 1) {
             PyErr_SetString(PyExc_TypeError,
-                            "shares keys not comprised entirely of positive numbers");
+                            "shares dict keys not comprised entirely of positive numbers");
             goto fail;
         }
 
