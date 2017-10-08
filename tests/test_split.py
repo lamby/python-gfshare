@@ -39,7 +39,7 @@ def test_validate_sharecount_threshold():
 
 
 def test_huge_split():
-    max_ = gfshare.MAX_SHARECOUNT
+    max_ = gfshare._MAX_SHARECOUNT
 
     assert gfshare.split(max_, max_, b"secret")
 

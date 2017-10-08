@@ -418,7 +418,7 @@ PyInit_gfshare(void)
         goto fail;
 
     PyModule_AddObject(module, "_BUFFER_SIZE", PyLong_FromLong(BUFFER_SIZE));
-    PyModule_AddObject(module, "MAX_SHARECOUNT", PyLong_FromLong(MAX_SHARECOUNT));
+    PyModule_AddObject(module, "_MAX_SHARECOUNT", PyLong_FromLong(MAX_SHARECOUNT));
 
     return module;
 
