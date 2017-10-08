@@ -35,7 +35,7 @@ with open('README.rst') as f:
 
 setup(
     name='gfshare',
-    version='1.0.5',
+    version='1.0.6',
     description="Python interface to libgfshare",
     long_description=long_description,
 
