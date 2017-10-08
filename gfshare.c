@@ -396,6 +396,7 @@ PyMODINIT_FUNC
 PyInit_gfshare(void)
 {
     PyObject *module = PyModule_Create(&moduledef);
+    PyObject *pResult = NULL;
     PyObject *pRandomModule = NULL;
 
     if (module == NULL)
@@ -420,9 +421,15 @@ PyInit_gfshare(void)
     PyModule_AddObject(module, "_BUFFER_SIZE", PyLong_FromLong(BUFFER_SIZE));
     PyModule_AddObject(module, "_MAX_SHARECOUNT", PyLong_FromLong(MAX_SHARECOUNT));
 
+    pResult = PyRun_String("assert combine(split(10, 10, b'secret')) == b'secret'",
+                           Py_file_input, PyDict_New(), PyModule_GetDict(module));
+    if (!pResult)
+       goto fail;
+
     return module;
 
 fail:
+    Py_XDECREF(pResult);
     Py_XDECREF(pRandomModule);
     Py_XDECREF(st->pRange);
     Py_XDECREF(st->pSampleFunc);
