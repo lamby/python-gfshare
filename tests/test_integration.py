@@ -2,7 +2,7 @@ import gfshare
 
 
 def test_buffer_size():
-    assert gfshare.BUFFER_SIZE > 1
+    assert gfshare._BUFFER_SIZE > 1
 
 
 def test_roundtrip():
@@ -10,7 +10,7 @@ def test_roundtrip():
 
 
 def test_exceed_buffer():
-    secret = b"X" * ((gfshare.BUFFER_SIZE * 2) + 1)
+    secret = b"X" * ((gfshare._BUFFER_SIZE * 2) + 1)
 
     split = gfshare.split(10, 10, secret)
     for x in split.values():

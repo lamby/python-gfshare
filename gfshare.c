@@ -411,7 +411,7 @@ PyInit_gfshare(void)
     if (!st->pSampleFunc || !PyCallable_Check(st->pSampleFunc))
         goto fail;
 
-    PyModule_AddObject(module, "BUFFER_SIZE", PyLong_FromLong(BUFFER_SIZE));
+    PyModule_AddObject(module, "_BUFFER_SIZE", PyLong_FromLong(BUFFER_SIZE));
 
     return module;
 
