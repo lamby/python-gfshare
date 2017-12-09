@@ -2,9 +2,13 @@ language: python
 python:
   - "3.5"
   - "3.6"
+install:
+  - pip install codecov
 addons:
   apt:
     packages:
       - libgfshare-dev
 script:
-  - ./setup.py test
+  - coverage run ./setup.py test
+after_success:
+  - codecov
