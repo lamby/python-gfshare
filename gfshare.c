@@ -199,8 +199,8 @@ split(PyObject *m, PyObject *args, PyObject *keywds) {
 
     const unsigned int sharesize = strlen(secret);
 
-    buffer = malloc(BUFFER_SIZE);
-    sharenrs = malloc(sharecount);
+    buffer = malloc(BUFFER_SIZE * sizeof(*buffer));
+    sharenrs = malloc(sharecount * sizeof(*sharenrs));
     if (buffer == NULL || sharenrs == NULL) {
         result = PyErr_NoMemory();
         goto cleanup;
@@ -225,15 +225,19 @@ split(PyObject *m, PyObject *args, PyObject *keywds) {
         goto cleanup;
     }
 
-    shares = malloc(sharecount * sizeof(char*));
+    shares = malloc(sharecount * sizeof(*shares));
     if (shares == NULL) {
         result = PyErr_NoMemory();
         goto cleanup;
     }
 
     for (int i = 0; i < sharecount; ++i) {
-        shares[i] = malloc(sharesize);
+        shares[i] = malloc((sharesize + 1) * sizeof(**shares));
         if (shares[i] == NULL) {
+            for (int j = 0; j < i; ++j) {
+                free(shares[j]);
+            }
+
             result = PyErr_NoMemory();
             goto cleanup;
         }
@@ -292,8 +296,8 @@ combine(PyObject *m, PyObject *args, PyObject *keywds) {
         goto fail;
     }
 
-    buffer = malloc(BUFFER_SIZE);
-    sharenrs = malloc(sharecount);
+    buffer = malloc(BUFFER_SIZE * sizeof(*buffer));
+    sharenrs = malloc(sharecount * sizeof(*sharenrs));
     if (buffer == NULL || sharenrs == NULL) {
         result = PyErr_NoMemory();
         goto fail;
@@ -330,7 +334,7 @@ combine(PyObject *m, PyObject *args, PyObject *keywds) {
         goto fail;
     }
 
-    secret = malloc(sharesize);
+    secret = malloc((sharesize + 1) * sizeof(*secret));
     if (secret == NULL) {
         result = PyErr_NoMemory();
         goto fail;
