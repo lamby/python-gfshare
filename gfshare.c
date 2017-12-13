@@ -340,7 +340,7 @@ combine(PyObject *m, PyObject *args, PyObject *keywds) {
         goto fail;
     }
 
-    for (unsigned int offset = 0; offset < sharesize; offset += BUFFER_SIZE) {
+    for (int offset = 0; offset < sharesize; offset += BUFFER_SIZE) {
         const unsigned int chunk = MIN(BUFFER_SIZE, (sharesize - offset));
 
         for (i = pos = 0; PyDict_Next(shares, &pos, &key, &value); ++i) {
