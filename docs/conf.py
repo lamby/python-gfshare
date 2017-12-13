@@ -59,7 +59,7 @@ author = u'Chris Lamb'
 #
 # The short X.Y version.
 version = subprocess.check_output(
-    ('../setup.py', '--version'),
+    ('./setup.py', '--version'), cwd=parent_dir,
 ).decode('utf-8').strip().split('\n')[-1]
 # The full version, including alpha/beta/rc tags.
 release = u''
