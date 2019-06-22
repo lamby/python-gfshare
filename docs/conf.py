@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # python-gfshare documentation build configuration file, created by
-# sphinx-quickstart on Tue Sep 26 19:39:47 2017.
+# sphinx-quickstart on Tue Sep 26 19:39:47 2017
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -50,7 +50,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'python-gfshare'
-copyright = u'2017 © Chris Lamb'
+copyright = u'2017, 2018, 2019 © Chris Lamb'
 author = u'Chris Lamb'
 
 # The version info for the project you're documenting, acts as replacement for
