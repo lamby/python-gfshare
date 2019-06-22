@@ -23,3 +23,7 @@ def test_exceed_buffer():
         assert len(x) == len(secret)
 
     assert gfshare.combine(split) == secret
+
+
+def test_embedded_null_byte():
+    assert gfshare.combine(gfshare.split(10, 10, b"sec\x00ret")) == b"sec\x00ret"

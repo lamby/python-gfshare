@@ -104,7 +104,7 @@ PyDoc_STRVAR(gfshare_split__doc__,
     ":param secret:     The secret to split.\n"
     ":type threshold:   int\n"
     ":type sharecount:  int\n"
-    ":type secret:      bytes\n"
+    ":type secret:      bytes (Unicode objects are converted using the 'utf-8' encoding.\n"
     ":returns:          The generated shares associated with their share number.\n"
     ":rtype:            dict\n"
     ":raises:           ValueError, TypeError\n"
@@ -171,10 +171,11 @@ split(PyObject *m, PyObject *args, PyObject *keywds) {
     const char* secret;
     unsigned char* buffer = NULL;
     unsigned char* sharenrs = NULL;
+    const unsigned int sharesize;
 
     char *kwlist[] = {"threshold", "sharecount", "secret", NULL};
-    if (!PyArg_ParseTupleAndKeywords(args, keywds, "iiy", kwlist,
-                                     &threshold, &sharecount, &secret))
+    if (!PyArg_ParseTupleAndKeywords(args, keywds, "iis#", kwlist,
+                                     &threshold, &sharecount, &secret, &sharesize))
         goto cleanup;
 
     if (threshold < 1) {
@@ -196,8 +197,6 @@ split(PyObject *m, PyObject *args, PyObject *keywds) {
         PyErr_SetString(PyExc_ValueError, "sharecount must be >= threshold");
         goto cleanup;
     }
-
-    const unsigned int sharesize = strlen(secret);
 
     buffer = malloc(BUFFER_SIZE * sizeof(*buffer));
     sharenrs = malloc(sharecount * sizeof(*sharenrs));

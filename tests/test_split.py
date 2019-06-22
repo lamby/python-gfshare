@@ -48,7 +48,5 @@ def test_huge_split():
     assert str(exc.value) == "sharecount must be < {}".format(max_)
 
 
-def test_validate_type():
-    with pytest.raises(TypeError) as exc:
-        gfshare.split(10, 10, "str")
-    assert str(exc.value) == "a bytes-like object is required, not 'str'"
+def test_allow_str():
+    gfshare.split(10, 10, "str")
