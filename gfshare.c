@@ -28,6 +28,7 @@
  * SUCH DAMAGE.
  */
 
+#define PY_SSIZE_T_CLEAN
 #include "Python.h"
 #include "libgfshare.h"
 
@@ -171,7 +172,7 @@ split(PyObject *m, PyObject *args, PyObject *keywds) {
     const char* secret;
     unsigned char* buffer = NULL;
     unsigned char* sharenrs = NULL;
-    const unsigned int sharesize;
+    const Py_ssize_t sharesize;
 
     char *kwlist[] = {"threshold", "sharecount", "secret", NULL};
     if (!PyArg_ParseTupleAndKeywords(args, keywds, "iis#", kwlist,
@@ -275,7 +276,7 @@ cleanup:
 static PyObject *
 combine(PyObject *m, PyObject *args, PyObject *keywds) {
     int i;
-    int sharesize = -1;
+    Py_ssize_t sharesize = -1;
     char* secret = NULL;
     PyObject *key, *value;
     PyObject *result = NULL;
